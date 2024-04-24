@@ -1,0 +1,58 @@
+<!-- Prince John -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Message</title>
+</head>
+<body>
+    <h1>Secret Message </h1>
+    <div class="container">
+        <!-- Text box inputs for first and last names -->
+        <input type="text" id="firstName" placeholder="Enter your first name">
+        <input type="text" id="lastName" placeholder="Enter your last name">
+        <!-- Text box input for zip code -->
+        <input type="text" id="zipCode" placeholder="Enter your zip code">
+        <button onclick="checkInputs()">Check Inputs</button>
+        <div id="result" class="result"></div>
+        <!-- adding the sound -->
+        <audio id="theaudio" src="us-lab-background.mp3"> </audio>
+
+         <!-- Button to activate the sound effect -->
+    <button onclick="playSound()">Play Sound</button>
+    </div>
+
+    <script language="javascript" type="text/javascript">
+  // Function to check if inputs are valid
+  function checkInputs() {
+            var firstName = document.getElementById("firstName").value.trim(); // Get first name input
+            var lastName = document.getElementById("lastName").value.trim(); // Get last name input
+            var fullName = firstName + " " + lastName; // Combine first and last names
+            var zipCode = document.getElementById("zipCode").value.trim(); // Get zip code
+       
+            // Check if full name has more than 20 characters
+            if (fullName.length > 20) {
+                document.getElementById("result").textContent = "Full name must be 20 characters or less.";
+                return; // Exit function
+            }
+
+            // Check if zip code hAS contains 5 digits
+            if (!/^\d{5}$/.test(zipCode)) {
+                document.getElementById("result").textContent = "Zip code must contain 5 digits.";
+                return; // Exit function
+            }
+
+            // displays the secret message and image if the zip and name are right
+            document.getElementById("result").textContent = "Congratulations! You've unlocked the secret message.";
+            document.getElementById("result").innerHTML += '<img src="4wayssecretmessages_header1140.avif" alt="Secret Message Image">';
+        } 
+         // Function to play the sound effect
+         function playSound() {
+            var audio = document.getElementById("theaudio");
+            audio.play();
+         }
+    </script>
+</body>
+</html>
